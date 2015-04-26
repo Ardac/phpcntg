@@ -1,0 +1,17 @@
+<?php 
+$fieldsLine = $viewData['fieldsLine'];
+include (VENDOR_PATH.'/acl/Core/src/Core/Forms/RenderForm.php');
+$userForm = include (APPLICATION_PATH.'/src/Application/Forms/UserForm.php');
+//TODO: Usar fieldsline tal cual viene fieldsline[0]=>DataUser 
+$fieldsLine2 = $fieldsLine[0];
+$data['iduser'] = $fieldsLine2['iduser'];
+
+foreach($fieldsLine2 as $key => $value)
+{
+    $isKeyInArray = array_key_exists($key, $userForm);
+    if ($isKeyInArray){
+        $data[$key] = $value;
+    }
+}
+$html = (renderForm($userForm, '/crud/update', 'post', $data));
+echo $html;

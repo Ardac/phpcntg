@@ -1,0 +1,39 @@
+<?php 
+$users = $viewData['users'];
+// echo "<pre>";
+// print_r($users);
+// echo "</pre>";
+// die;
+
+
+?>
+
+<h1 class="page-header">Users</h1>
+
+<a href="/crud/insert">Insert</a>
+<div class="table-responsive">
+<table class="table table-striped">
+    <?php foreach($users as $id => $user):?>
+        <tr>
+           <?php 
+            foreach ($user as $value):?>               
+                <td><?php 
+                if (is_array($value)):
+                    
+                    echo implode(",", $value);
+                    
+                else:                
+
+                    echo $value;
+
+                endif;
+                ?></td>
+            <?php endforeach; ?>
+            <td>
+                <a href="/crud/update/id/<?=$users[$id]['iduser'];?>">Update</a> | 
+                <a href="/crud/delete/id/<?=$users[$id]['iduser'];?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+</div>
