@@ -32,7 +32,6 @@ switch($request['action'])
     break;
 
     case 'update':
-        echo "esto es update";
         if ($_POST)
         {
             $user = putUser($_POST['id'], $_POST);
@@ -40,7 +39,8 @@ switch($request['action'])
         }
         else
         {                       
-            $user = getUser($request['params']['id']);
+          //  $user = getUser($request['params']['id']);
+            $user = getUser($config['database'], $request['params']['id']);
             $content = renderView("../modules/Application/views/crud/update.phtml",
                               array('fieldsLine'=>$user)
                     );
@@ -48,7 +48,6 @@ switch($request['action'])
     break;
 
     case 'delete':
-        echo "esto es delete";
         if ($_POST)
         {
             if ($_POST['borrar'] === "SI")

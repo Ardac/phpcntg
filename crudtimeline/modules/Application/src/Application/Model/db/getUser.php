@@ -1,12 +1,23 @@
-<?php
-function getUser($id)
+ <?php
+function getUser($config,$id)
 {
+    
+    $link = mysqli_connect($config['host'], $config['user'], $config['password'], $config['database']);
+    //seleccionar db
+    
+    mysqli_select_db($link, $config['database']);
+    //crear consulta
+    //modifica los parametros de gender y city
 
-    //obtengo el archivo de texto
-    $fileData = file_get_contents('../data/users.txt');
-    $fileLines = explode("\n", $fileData);
-    //get the user, and split it by ',' into a array
-    $fieldsLine = explode(",", $fileLines[$id]);
-
-    return $fieldsLine;
+    $query="SELECT * FROM timeline WHERE idtimeline='".$id."'";
+    
+  
+    //enviar consulta
+    $result = mysqli_query($link, $query);
+    
+    $row = mysqli_fetch_assoc($result);
+    
+    mysqli_close($link);
+    
+    return $row;
 }

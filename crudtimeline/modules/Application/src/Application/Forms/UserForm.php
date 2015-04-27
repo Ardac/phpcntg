@@ -6,6 +6,11 @@
 // $transports = getTransports($config);
 
 return array(
+    'idtimeline'=>array(
+        'type'=>'hidden',
+        'filters'=> array('Stringtrim', 'StripTags', 'Escape'),
+        'validators' => array ('required'=>true)
+    ),
     'startdate'=>array(
         'label' => 'Start Date',
         'type' => 'date',
@@ -56,7 +61,7 @@ return array(
             'lenghtMin'=>1,
         )
     ),
-    'thumbnail'=>array(
+    'mediathumbnail'=>array(
         'label' => 'Thumbnail',
         'type'=>'text',
         'filters'=> array('Stringtrim', 'StripTags', 'Escape'),
