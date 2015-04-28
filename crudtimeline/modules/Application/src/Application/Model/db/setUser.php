@@ -20,17 +20,12 @@ function setUser($data, $config)
                      enddate='".$data['enddate']."',
                      headline = '".$data['headline']."',
                      text='".$data['text']."',
-					 media='".$data['media']."',
-					 mediacredit='".$data['mediacredit']."',
-                     mediathumbnail='".$data['thumbnail']."',
+                     media='".$data['media']."',
+                     mediacredit='".$data['mediacredit']."',
+                     mediacaption='".$data['mediacaption']."',
+                     mediathumbnail='".$data['mediathumbnail']."',
                      type='".$data['type']."',
                      tag='".$data['tag']."'";
-
-//         echo "<pre>";
-//         print_r($query);
-//         echo "</pre>";
-//         die;
-
 
     // Enviar la consulta
         $result = mysqli_query($link, $query);

@@ -1,45 +1,17 @@
 <?php 
 $fieldsLine = $viewData['fieldsLine'];
-
-// echo "<pre>";
-// print_r($fieldsLine);
-// echo "</pre>";
-
-
 include (VENDOR_PATH.'/acl/Core/src/Core/Forms/RenderForm.php');
-$formDefinition = include (APPLICATION_PATH.'/src/Application/Forms/UserForm.php');
+$userForm = include (APPLICATION_PATH.'/src/Application/Forms/UserForm.php');
 
-// echo "<pre>";
-// print_r($formDefinition);
-// echo "</pre>";
+$data['idtimeline'] = $fieldsLine['idtimeline'];
 
-
-
-$data = array();    //initialize the data as a array
-$userFieldsIndex = 0;
-// foreach ($formDefinition as $fieldName => $fieldAttributes)
-// {
-//     $valuesField = $fieldsLine[$fieldName];
-//     echo "<pre>";
-//     print_r($valuesField);
-//     echo "</pre>";
-//     $data[$fieldName] = $valuesField;
-//     $userFieldsIndex = $userFieldsIndex + 1;
-// }
-foreach($fieldsLine as $fieldName => $fieldAttributes)
+foreach($fieldsLine as $key => $value)
 {
-    $isKeyInArray = array_key_exists($fieldName, $formDefinition);
+    $isKeyInArray = array_key_exists($key, $userForm);
     if ($isKeyInArray){
-        $data[$fieldName] = $fieldAttributes;
+        $data[$key] = $value;
     }
 }
-//     echo "<pre>";
-//     print_r($data);
-//     echo "</pre>";
-//die("aqui");
 
-
-
-//$data['id'] = $id;
-
-echo(renderForm($formDefinition, '/users/update', 'post', $data));
+$html = (renderForm($userForm, '/crud/update', 'post', $data));
+echo $html;

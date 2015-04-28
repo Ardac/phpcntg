@@ -1,12 +1,11 @@
 <?php
-
-
-function deleteUser($id)
+function deleteUser($id,$config)
 {
-    $users = file_get_contents('../data/users.txt');
-    $users = explode("\n", $users);
-    unset($users[$id]);
-    file_put_contents('../data/users.txt', implode("\n",$users));
-    
+    $link = mysqli_connect($config['host'], $config['user'], $config['password'], $config['database']);
+    mysqli_select_db($link, $config['database']);
+    $query="DELETE FROM timeline where idtimeline='".$id."';";
+
+    $result = mysqli_query($link, $query);
+    mysqli_close($link);
     return true;
 }

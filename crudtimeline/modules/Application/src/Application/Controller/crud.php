@@ -12,16 +12,16 @@ switch($request['action'])
 {
     case 'index':
     case 'select':
-        $users = getUsers($config['database']);  
+        $data = getUsers($config['database']);  
         $content = renderView("../modules/Application/views/crud/select.phtml",
-                              array('users'=>$users)
+                              array('data'=>$data)
                     );   
     break;
 
     case 'insert':        
         if($_POST)
         {              
-            $user = setUser($_POST, $config['database']);
+            $data = setUser($_POST, $config['database']);
             header("Location: /crud/select");
         }
         else 
@@ -34,15 +34,16 @@ switch($request['action'])
     case 'update':
         if ($_POST)
         {
-            $user = putUser($_POST['id'], $_POST);
+            $data = putUser($_POST['idtimeline'], $_POST,$config['database']);
             header("Location: /crud/select");
         }
         else
         {                       
           //  $user = getUser($request['params']['id']);
-            $user = getUser($config['database'], $request['params']['id']);
+            $data = getUser($config['database'], $request['params']['id']);
+                        
             $content = renderView("../modules/Application/views/crud/update.phtml",
-                              array('fieldsLine'=>$user)
+                              array('fieldsLine'=>$data)
                     );
         }
     break;
@@ -52,15 +53,15 @@ switch($request['action'])
         {
             if ($_POST['borrar'] === "SI")
             {
-                deleteUser($_POST['id']);
+                deleteUser($_POST['id'],$config['database']);
             }               
             header("Location: /crud/select");    
         }
         else
         {     
-            $user = getUser($request['params']['id']);
+            $data = getUser($config['database'], $request['params']['id']);
             $content = renderView("../modules/Application/views/crud/delete.phtml",
-                array('user'=>$user)
+                array('data'=>$data)
             );
         }
     break;

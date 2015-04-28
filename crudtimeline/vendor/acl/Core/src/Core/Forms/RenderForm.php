@@ -24,7 +24,10 @@ function renderForm($formDefinition, $action, $method='post', $data = array())
     	switch($value['type']) {
     	    //dibujar tipo ->nombre=$key,valor=current($data)
     	    case 'hidden':
-    	             $html .="<input type=\"hidden\" name=\"".$key."\" value=\"".$data[$key]."\">";  
+    	        if (!empty($data))
+    	        {
+    	            $html .="<input type=\"hidden\" name=\"".$key."\" value=\"".$data[$key]."\">";
+    	        }
     	        break;
     		case 'text':
     		    $html.="<li>";

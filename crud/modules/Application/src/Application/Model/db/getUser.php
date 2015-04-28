@@ -66,6 +66,7 @@ function getUser($id,$config)
         
     }
 
-  
+    mysqli_close($link);
+    
     return $users;
 }

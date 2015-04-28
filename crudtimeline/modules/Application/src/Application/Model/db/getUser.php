@@ -7,8 +7,7 @@ function getUser($config,$id)
     
     mysqli_select_db($link, $config['database']);
     //crear consulta
-    //modifica los parametros de gender y city
-
+    // crear un alias de idtimeline como id para evitar conflictos con renderform
     $query="SELECT * FROM timeline WHERE idtimeline='".$id."'";
     
   
