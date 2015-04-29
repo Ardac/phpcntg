@@ -32,6 +32,12 @@ function parseUrl($url)
             'update',
             'delete',
             'select'
+        ),
+        'timeline' => array(
+            'insert',
+            'update',
+            'delete',
+            'select'
         )
     );
      
@@ -43,7 +49,6 @@ function parseUrl($url)
         $array['controller'] = $components[1];
     else if(isset($components[1]))
         $array['controller'] = 'error';
-
      
     if ($components[1] != "")
     {

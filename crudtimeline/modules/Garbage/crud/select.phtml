@@ -1,0 +1,23 @@
+<?php 
+$data = $viewData['data'];
+?>
+<h1 class="page-header">Data</h1>
+
+<a href="/crud/insert">Insert</a>
+<div class="table-responsive">
+<table class="table table-striped">
+    <?php foreach($data as $id => $value):?>
+        <tr>
+           <?php 
+            //$user = explode(",", $user);
+            foreach ($value as $value2):?>               
+                <td><?php echo $value2;?></td>
+            <?php endforeach; ?>
+            <td>
+                <a href="/crud/update/id/<?=$data[$id]['idtimeline'];?>">Update</a> | 
+                <a href="/crud/delete/id/<?=$data[$id]['idtimeline'];?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+</div>

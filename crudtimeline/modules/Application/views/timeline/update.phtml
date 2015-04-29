@@ -1,0 +1,17 @@
+<?php 
+$fieldsLine = $viewData['fieldsLine'];
+include (VENDOR_PATH.'/acl/Core/src/Core/Forms/RenderForm.php');
+$userForm = include (APPLICATION_PATH.'/src/Application/Forms/UserForm.php');
+
+$data['idtimeline'] = $fieldsLine['idtimeline'];
+
+foreach($fieldsLine as $key => $value)
+{
+    $isKeyInArray = array_key_exists($key, $userForm);
+    if ($isKeyInArray){
+        $data[$key] = $value;
+    }
+}
+
+$html = (renderForm($userForm, '/timeline/update', 'post', $data));
+echo $html;

@@ -17,25 +17,23 @@ include ("../vendor/acl/Core/src/Core/Controller/Helper/parseUrl.php");
 
 $request = parseUrl($_SERVER['REQUEST_URI']);
 
-// echo "<pre>request: ";
-// print_r($request);
-// echo "</pre>";
-
-// die("aqui");
-
 switch($request['controller'])
 {
-    case 'index':
-    case 'users':
-        include ("../modules/Application/src/Application/Controller/users.php");
-    break;
+//     case 'index':
+//     case 'users':
+//         include ("../modules/Garbage/users.php");
+//     break;
     
-    case 'home':
-        include ("../modules/Application/src/Application/Controller/home.php");
-    break;
+//     case 'home':
+//         include ("../modules/Garbage/home.php");
+//     break;
     
-    case 'crud':
-        include ("../modules/Application/src/Application/Controller/crud.php");
-    break;
+//     case 'crud':
+//         include ("../modules/Garbage/crud.php");
+//     break;
+    case 'timeline':
+       
+        include ("../modules/Application/src/Application/Controller/timeline.php");
+        break;
     
 }
