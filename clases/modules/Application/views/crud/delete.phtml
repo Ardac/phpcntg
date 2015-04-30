@@ -1,0 +1,10 @@
+<?php 
+$user = $viewData['user'];
+
+?>
+<form method ="POST" action="/crud/delete">
+    Estas seguro que queires borrar el usuario: <?=$user['headline'];?>?
+    <input type="hidden" name="id" value="<?=$user['idtimeline'];?>"/>
+    <input name="borrar" value="SI" type ="submit"/>
+    <input name="borrar" value="NO" type ="submit"/>
+</form>

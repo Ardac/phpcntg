@@ -1,0 +1,32 @@
+<?php 
+ $fieldsLine = $viewData['fieldsLine'];
+
+
+include (VENDOR_PATH.'/acl/Core/src/Core/Forms/RenderForm.php');
+$formDefinition = include (APPLICATION_PATH.'/src/Application/Forms/UserForm.php');
+$data = array();    //initialize the data as a array
+$userFieldsIndex = 0;
+
+// echo "<pre> fieldline ";
+// print_r($fieldsLine);
+// echo "<pre>";
+
+
+// echo "<pre> definition ";
+// print_r($formDefinition);
+// echo "<pre>";
+
+
+// foreach ($formDefinition as $fieldName => $fieldAttributes)
+// {
+    $data = $fieldsLine[$userFieldsIndex];
+    
+
+    
+    //$data[$fieldName] = $valuesField;
+    //$userFieldsIndex = $userFieldsIndex + 1;
+//}
+
+ $data['id'] = $data['idtimeline'];
+
+echo(renderForm($formDefinition, '/crud/update', 'post', $data));
