@@ -1,0 +1,8 @@
+<?php 
+
+include(VENDOR_PATH.'/acl/Core/src/Core/Forms/RenderForm.php');
+
+$timelineForm = include (MODULE_PATH.'/Timeline/src/Timeline/Form/AfiliacionForm.php');
+$html = renderForm($timelineForm, '/timeline/insert', 'POST', array('id'=>0));
+
+echo $html;
