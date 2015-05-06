@@ -1,6 +1,5 @@
 <?php
 namespace acl\Core\Controller\Helper;
-
 class Router
 {
     
@@ -17,23 +16,14 @@ class Router
     {
         
         $url =  explode("/",$url);
-
         
-//         echo "<pre> url";
-//         print_r($url);
-//         echo "</pre>";
-        
-        
-//         echo "<pre> routes";
-//         print_r($routes);
-//         echo "</pre>";        
         if(!array_key_exists($url[1],$routes))
-            return array('module' => 'Timeline',
+            return array('module' => 'Application',
                          'controller' => 'Error');
+            
         return array('module' => $routes[$url[1]]['module'], 
                      'controller' => $routes[$url[1]]['controller']);
     }
-
      /**
      * Parse URL
      * @param string $url
@@ -56,7 +46,6 @@ class Router
     static public function parseUrl($url, $router)
     {
         $actions = get_class_methods($router['module']."\\Controller\\".$router['controller']);
-
         // Descomponer la url
         $components = explode('/', $url);
          
@@ -64,25 +53,36 @@ class Router
         if(file_exists(MODULE_PATH."/".$router['module']."/src/".$router['module']."/Controller/".$router['controller'].".php"))
             $array['controller'] = $router['controller'];
         else if(isset($components[1]))
+//             echo "<pre> Router ";
+//             print_r($router);
+//             echo "</pre>";
+            
+//             echo "<pre> array ";
+//             print_r($array);
+//             echo "</pre>";
+            
+            
+//             die("aqui");
             $array['controller'] = 'error';
-        
+    
          
-        if (isset($components[3]))
+        if ($components[1] != "")
         {
             // Determinar la accion
-            if (isset($components[3]))
+            if (isset($components[2]))
             {
-                if(in_array($components[3]."Action", $actions))
-                    $array['action'] = $components[3]."Action";
+
+                if(in_array($components[2]."Action", $actions))
+                    $array['action'] = $components[2]."Action";
                 else {
                     $array['controller'] = 'error';
                     $array['action'] = '404Action';
                 }
                  
-                if (isset($components[4]))
+                if (isset($components[3]))
                 {
                     // Si el número de parametros es impar
-                    if (count($components) > 4 && count($components) % 2 == 0) {
+                    if (count($components) > 3 && count($components) % 2 == 0) {
                         $array['controller'] = 'error';
                         $array['action'] = '400Action';
                         $array['params'] = null;
@@ -145,4 +145,3 @@ class Router
         return $array;
     }
 }
-

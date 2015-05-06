@@ -9,26 +9,26 @@ class TimelineMapper
     private $resource = 'Timeline';
     public $adapter;
     
-    public function getTimelines()
+    public function getCharacters()
     {
         $gatewayName = "Timeline\\Gateways\\".Config::$config['adapter'].$this->resource;
         $gateway = new $gatewayName(Config::$config['database']);
-        $timelines = $gateway->getTimelines();
+        $characters = $gateway->getCharacters();
 
-        $entity = new TimelineEntity();
+//         $entity = new TimelineEntity();
         
-        foreach ($timelines as $key => $timeline)
-        {
-            $entity->hydrate($timeline);
-            $arrayobjects[$key] = $entity;//new \ArrayObject($entity,\ArrayObject::STD_PROP_LIST);
-        }
+//         foreach ($timelines as $key => $timeline)
+//         {
+//             $entity->hydrate($timeline);
+//             $arrayobjects[$key] = $entity;//new \ArrayObject($entity,\ArrayObject::STD_PROP_LIST);
+//         }
 
-        foreach ($arrayobjects as $key => $arrayobject)
-        {
-            $arrayTimelines[$key] = $entity->extract($arrayobject);
-        }
+//         foreach ($arrayobjects as $key => $arrayobject)
+//         {
+//             $arrayTimelines[$key] = $entity->extract($arrayobject);
+//         }
    
-        return $timelines;
+        return $characters;
     }
     
     public function getTimeline($id)

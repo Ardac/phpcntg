@@ -3,7 +3,7 @@
 require ("../autoload.php");
 
 define ("MODULE_PATH", "../modules");
-//define ("APPLICATION_PATH", "../modules/Application");
+define ("APPLICATION_PATH", "../modules/Character");
 define ("VENDOR_PATH", "../vendor");
 define ("ROOT_PATH", "../");
 define ("RPATH", $_SERVER['DOCUMENT_ROOT']."/..");

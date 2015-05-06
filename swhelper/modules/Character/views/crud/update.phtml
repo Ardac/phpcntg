@@ -1,17 +1,37 @@
 <?php 
-$fieldsLine = $viewData['fieldsLine'];
+$fieldsLine = $viewData['fieldsLine'][0];
 
 include (VENDOR_PATH.'/acl/Core/src/Core/Forms/RenderForm.php');
-$formDefinition = include (APPLICATION_PATH.'/src/Application/Forms/UserForm.php');
+$formDefinition = include (APPLICATION_PATH.'/src/Character/Form/CharacterForm.php');
 $data = array();    //initialize the data as a array
 $userFieldsIndex = 0;
+
+            echo "<pre> formdefinition";
+            print_r($formDefinition);
+            echo "</pre>";
+
+            echo "<pre> fieldline";
+            print_r($fieldsLine);
+            echo "</pre>";
+            
+
+          //  die;
+
 foreach ($formDefinition as $fieldName => $fieldAttributes)
 {
-    $valuesField = $fieldsLine[$userFieldsIndex];
+    $valuesField = $fieldsLine[$fieldName];
     $data[$fieldName] = $valuesField;
     $userFieldsIndex = $userFieldsIndex + 1;
-}
+}            
+            
 
-$data['id'] = $id;
+// foreach ($formDefinition as $fieldName => $fieldAttributes)
+// {
+//     $valuesField = $fieldsLine[$fieldName];
+//     $data[$fieldName] = $valuesField;
+//     $userFieldsIndex = $userFieldsIndex + 1;
+// }
+
+$data['id'] = $data['idcharacter'];
 
 echo(renderForm($formDefinition, '/users/update', 'post', $data));

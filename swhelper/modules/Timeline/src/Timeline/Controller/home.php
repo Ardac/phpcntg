@@ -7,7 +7,7 @@ use Timeline\Mapper\TimelineMapper;
 //use Timeline\Entity\TimelineEntities;
 
 
-class home
+class Home
 {
     public $layout ='dashboard';
     protected $request;
@@ -19,13 +19,11 @@ class home
     
     public function indexAction()
     {
-        echo "esto es index";
-        
-    
         $mapper = new TimelineMapper();
-        $timelines = $mapper->getTimelines();
+        $characters = $mapper->getCharacters();
+
         $content = View::renderView("../modules/Timeline/views/crud/select.phtml",
-            array('timelines'=>$timelines)
+            array('characters'=>$characters)
         );
         return $content;
     }
@@ -76,7 +74,7 @@ class home
 //             print_r("aqui ");
 //             echo "</pre>";
 //             die;
-            //timeslines será un objeto
+            //timeslines serï¿½ un objeto
             
             
             $content = View::renderView("../modules/Timeline/views/crud/update.phtml",

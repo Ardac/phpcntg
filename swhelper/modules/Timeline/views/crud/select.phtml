@@ -1,21 +1,26 @@
 <?php 
-$datas = $viewData['timelines'];
-?>
-<h1 class="page-header">Timelines</h1>
+$datas = $viewData['characters'];
 
-<a href="/Character/Create">Crear Personaje</a>
+?>
+<h1 class="page-header">Personajes</h1>
+
+<a href="/Character">Crear Personaje</a>
 <div class="table-responsive">
 <table class="table table-striped">
     <?php foreach($datas as $id => $data):?>
         <tr>
            <?php 
-            //$user = explode(",", $user);
-            foreach ($data as $value):?>               
-                <td><?php echo $value;?></td>
+            foreach ($data as $key => $value):?>               
+                <td><?php 
+                if ($key<>'idcharacter')
+                {
+                    echo $value;
+                }
+                ?></td>
             <?php endforeach; ?>
             <td>
-                <a href="/timeline/update/idtimeline/<?=$data['idtimeline'];?>">Update</a> | 
-                <a href="/timeline/delete/idtimeline/<?=$data['idtimeline'];?>">Delete</a>
+                <a href="/Character/update/idcharacter/<?=$data['idcharacter'];?>">Update</a> | 
+                <a href="/Character/delete/idcharacter/<?=$data['idcharacter'];?>">Delete</a>
             </td>
         </tr>
     <?php endforeach; ?>

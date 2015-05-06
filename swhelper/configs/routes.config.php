@@ -2,22 +2,14 @@
 return array (
     ''=>array(
         'module'        => 'Timeline',
-        'controller'    => 'home'
+        'controller'    => 'Home'
     ),
-    'timeline'=>array(
-        'module'        => 'Timeline',
-        'controller'    => 'Crud'
-    ),
+//     'timeline'=>array(
+//         'module'        => 'Timeline',
+//         'controller'    => 'Home'
+//     ),
     'Character'=>array(
         'module'        => 'Character',
-        'controller'    => 'Create'
-    ),
-    'crud'=>array(
-        'module'        => 'Crud',
-        'controller'    => 'Crud'
-    ),
-    'micrud'=>array(
-        'module'        => 'Crud',
-        'controller'    => 'Crud'
+        'controller'    => 'Home'
     ),
 );

@@ -8,64 +8,55 @@ class CharacterMapper
    private $resource = 'Character';
     public $adapter;
     
-    public function getTimelines()
-    {
-        $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
-        $gateway = new $gatewayName(Config::$config['database']);
-        
+//     public function getTimelines()
+//     {
+//         $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
+//         $gateway = new $gatewayName(Config::$config['database']);
+//         $timelines = $gateway->getTimelines();
 
+//         $entity = new TimelineEntity();
         
-        $timelines = $gateway->getTimelines();
+//         foreach ($timelines as $key => $timeline)
+//         {
+//             $entity->hydrate($timeline);
+//             $arrayobjects[$key] = $entity;//new \ArrayObject($entity,\ArrayObject::STD_PROP_LIST);
+//         }
 
-        $entity = new TimelineEntity();
-        
-        foreach ($timelines as $key => $timeline)
-        {
-            $entity->hydrate($timeline);
-            $arrayobjects[$key] = $entity;//new \ArrayObject($entity,\ArrayObject::STD_PROP_LIST);
-        }
-
-        foreach ($arrayobjects as $key => $arrayobject)
-        {
-            $arrayTimelines[$key] = $entity->extract($arrayobject);
-        }
+//         foreach ($arrayobjects as $key => $arrayobject)
+//         {
+//             $arrayTimelines[$key] = $entity->extract($arrayobject);
+//         }
    
-        return $timelines;
-    }
+//         return $timelines;
+//     }
     
-    public function getTimeline($id)
+    public function getCharacter($idcharacter)
     {
         $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
         $gateway = new $gatewayName(Config::$config['database']);
     
-        $timelines = $gateway->getTimeline($id);
-        $entity = new TimelineEntity();
-
-        $entity->hydrate($timelines);
-
-        $timelines = $entity->extract($entity);
-
-        return $timelines;
+        $character = $gateway->getCharacter($idcharacter);
+        return $character;
     }
     
-    public function setTimeline($data)
+    public function setCharacter($data)
     {
         $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
         $gateway = new $gatewayName(Config::$config['database']);
         
-        $timelines = $gateway->setTimeline($data);
+        $character = $gateway->setCharacter($data);
         
-        return $timelines;
+        return $character;
     }
     
-    public function putTimeline($id, $data)
+    public function putCharacter($id, $data)
     {
         $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
         $gateway = new $gatewayName(Config::$config['database']);
         
-        $timelines = $gateway->putTimeline($id, $data);
+        $character = $gateway->putCharacter($id, $data);
         
-        return $timelines;
+        return $character;
     }
     
     public function deleteTimeline($id)
@@ -76,7 +67,14 @@ class CharacterMapper
         
         return $timelines;
     }
+    public function getClass()
+    {
+        $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
+        $gateway = new $gatewayName(Config::$config['database']);
     
+        $classes = $gateway->getClass();
     
-    
+             
+        return $classes;
+    }
 }

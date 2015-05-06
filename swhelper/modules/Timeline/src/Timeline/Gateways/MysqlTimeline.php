@@ -5,13 +5,14 @@ use acl\Core\Adapter\MysqlAdapter;
 
 class MysqlTimeline extends MysqlAdapter
 {
-    public function getTimelines()
+    public function getCharacters()
     {
-       
+
         $data = [];
-        $query = "SELECT * FROM personaje";
+        $query = "SELECT idcharacter,name,description FROM swhelper.characters
+                    inner join class on class_idclass=idclass";
         $result = $this->query($query);
-        
+
         $data = $this->recordSet($result);
         return $data;
     }
