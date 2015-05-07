@@ -28,41 +28,10 @@ class Home
         {
             $content = View::renderView("../modules/Character/views/crud/create.phtml");
         }
-
-
-        
-        
         return $content;
     }
-//     public function imperioAction()
-//     {
-//         echo "esto es select";
-        
-//         $mapper = new CharacterMapper();
-//         $timelines = $mapper->getTimelines();
-//         $content = View::renderView("../modules/Timeline/views/crud/select.phtml",
-//              array('timelines'=>$timelines)
-//         );
-//         return $content;
-//     }
     
-//     public function createAction()
-//     {
-//         echo "esto es insert";
-//         if($_POST)
-//         {
-            
-//             $mapper = new CharacterMapper();
-//             $timeline = $mapper->setTimeline($_POST);
-//             header("Location: /timeline/select");
-//         }
-//         else
-//         {
-//             $content = View::renderView("../modules/Timeline/views/crud/insert.phtml");
-//         }
-//         return $content;
-//     }
-    
+   
     public function updateAction()
     {
         //echo "esto es update";

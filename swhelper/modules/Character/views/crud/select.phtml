@@ -10,13 +10,19 @@ $historics = $viewData['historics'];
     <?php foreach($historics as $id => $value):?>
         <tr>
            <?php 
-            foreach ($value as $value2):?>               
-                <td><?php echo $value2;?></td>
+            foreach ($value as $id2 => $value2):
+            
+                if($id2<>'idhistoric')
+                {
+                ?>   
+                    <td><?php echo $value2;
+                }    
+                ?></td>
             <?php endforeach; ?>
-            <td>
+          <!--   <td>
                 <a href="/Mission/update/id/<?=$historics[$id]['idhistoric'];?>">Update</a> | 
                 <a href="/Mission/delete/id/<?=$historics[$id]['idhistoric'];?>">Delete</a>
-            </td>
+            </td> -->
         </tr>
     <?php endforeach; ?>
 </table>
