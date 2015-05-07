@@ -5,30 +5,8 @@ use acl\Core\Config;
 
 class CharacterMapper
 {
-   private $resource = 'Character';
+    private $resource = 'Character';
     public $adapter;
-    
-//     public function getTimelines()
-//     {
-//         $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
-//         $gateway = new $gatewayName(Config::$config['database']);
-//         $timelines = $gateway->getTimelines();
-
-//         $entity = new TimelineEntity();
-        
-//         foreach ($timelines as $key => $timeline)
-//         {
-//             $entity->hydrate($timeline);
-//             $arrayobjects[$key] = $entity;//new \ArrayObject($entity,\ArrayObject::STD_PROP_LIST);
-//         }
-
-//         foreach ($arrayobjects as $key => $arrayobject)
-//         {
-//             $arrayTimelines[$key] = $entity->extract($arrayobject);
-//         }
-   
-//         return $timelines;
-//     }
     
     public function getCharacter($idcharacter)
     {
@@ -59,13 +37,13 @@ class CharacterMapper
         return $character;
     }
     
-    public function deleteTimeline($id)
+    public function deleteCharacter($id)
     {
         $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
         $gateway = new $gatewayName(Config::$config['database']);
-        $timelines = $gateway->deleteTimeline($id);
+        $character = $gateway->deleteCharacter($id);
         
-        return $timelines;
+        return $character;
     }
     public function getClass()
     {
@@ -73,8 +51,53 @@ class CharacterMapper
         $gateway = new $gatewayName(Config::$config['database']);
     
         $classes = $gateway->getClass();
-    
-             
+
         return $classes;
+    }
+    
+    public function getHistoric($id)
+    {
+        $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
+        $gateway = new $gatewayName(Config::$config['database']);
+    
+        $Historic = $gateway->getHistoric($id);
+    
+        return $Historic;
+    }
+    
+    public function getMissions()
+    {
+        $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
+        $gateway = new $gatewayName(Config::$config['database']);
+    
+        $Missions = $gateway->getMissions();
+    
+        return $Missions;
+    }
+    public function getCharacters()
+    {
+        $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
+        $gateway = new $gatewayName(Config::$config['database']);
+    
+        $characters = $gateway->getCharacters();
+        return $characters;
+    }
+    public function setMission($data)
+    {
+        $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
+        $gateway = new $gatewayName(Config::$config['database']);
+    
+        $mission = $gateway->setMission($data);
+    
+        return $mission;
+    }
+    public function getHistorics()
+    {
+        $gatewayName = "Character\\Gateways\\".Config::$config['adapter'].$this->resource;
+        $gateway = new $gatewayName(Config::$config['database']);
+    
+        $Historics = $gateway->getHistorics();
+    
+        return $Historics;
     }
 }

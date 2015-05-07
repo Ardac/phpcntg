@@ -1,0 +1,8 @@
+<?php 
+
+include(VENDOR_PATH.'/acl/Core/src/Core/Forms/RenderForm.php');
+
+$MissionForm = include (MODULE_PATH.'/Character/src/Character/Form/MissionForm.php');
+$html = renderForm($MissionForm, '/Mission/insert', 'POST', array('id'=>0));
+
+echo $html;

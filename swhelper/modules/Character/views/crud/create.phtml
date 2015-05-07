@@ -6,11 +6,4 @@ include(VENDOR_PATH.'/acl/Core/src/Core/Forms/RenderForm.php');
 $timelineForm = include (MODULE_PATH.'/Character/src/Character/Form/CharacterForm.php');
 $html = renderForm($timelineForm, '/Character', 'POST', array('id'=>0));
 
-
-// echo "<pre>";
-// print_r($config);
-// echo "</pre>";
-// die("aqui");
-
-
 echo $html;

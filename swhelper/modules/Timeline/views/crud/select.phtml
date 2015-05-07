@@ -2,13 +2,16 @@
 $datas = $viewData['characters'];
 
 ?>
-<h1 class="page-header">Personajes</h1>
+<h1 class="page-header">Characters</h1>
 
-<a href="/Character">Crear Personaje</a>
+<a href="/Character">Create Character</a>
 <div class="table-responsive">
 <table class="table table-striped">
     <?php foreach($datas as $id => $data):?>
         <tr>
+         <td>
+                <a href="/Mission/show/idcharacter/<?=$data['idcharacter'];?>">Missions</a>
+            </td>
            <?php 
             foreach ($data as $key => $value):?>               
                 <td><?php 

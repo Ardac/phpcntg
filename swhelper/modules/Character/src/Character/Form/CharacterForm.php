@@ -1,16 +1,11 @@
 <?php
 
 use Character\Mapper\CharacterMapper;
-//TODO leer la clase desde la base de datos
 
-// include (APPLICATION_PATH."/src/Character/Model/db/getClass.php");
- include (VENDOR_PATH."/acl/Core/src/Core/Forms/readFields.php");
+include (VENDOR_PATH."/acl/Core/src/Core/Forms/readFields.php");
 
 $mapper = new CharacterMapper();
 $Classes = $mapper->getClass();
-
-// $Classes = getClass($config);
-
 return array(
     'idcharacter'=>array(
         'type'=>'hidden',

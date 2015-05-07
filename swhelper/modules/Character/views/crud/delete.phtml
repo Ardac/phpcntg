@@ -1,9 +1,9 @@
 <?php 
-$user = $viewData['user'];
+$character = $viewData['character'][0];
 ?>
-<form method ="POST" action="/users/delete">
-    Estas seguro que queires borrar el usuario: <?=$user['name'];?>?
-    <input type="hidden" name="id" value="<?=$request['params']['id'];?>"/>
+<form method ="POST" action="/Character/delete">
+    Estas seguro que quieres borrar el usuario: <?=$character['name'];?>?
+    <input type="hidden" name="idcharacter" value="<?=$character['idcharacter'];?>"/>
     <input name="borrar" value="SI" type ="submit"/>
     <input name="borrar" value="NO" type ="submit"/>
 </form>

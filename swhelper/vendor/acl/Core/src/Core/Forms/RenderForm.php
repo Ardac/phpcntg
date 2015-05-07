@@ -149,13 +149,14 @@ function renderForm($formDefinition, $action, $method='post', $data = array())
     			 $html .="<select name=\"".$key."\"><br />";
     			    foreach($value['options'] as $key2 => $value2)
     			    {
-    			        //recorremos las opciones para dibujarlas
-    			        if(empty($_GET)=="")
-    			        {
+    			                     			        //recorremos las opciones para dibujarlas
+//     			        if(empty($_GET)=="")
+//     			        {
     			            //comprobamos si es un update
+    			            
     			            if(current($data)==$value2)
     			            {   
-    			                $html .= "<option value=\"".$value2."\"selected=\"selected\">";
+    			                $html .= "<option value=\"".$value2."\" selected>";
     			                $html .= $key2."</option><br />"."\n";
     			            }
     			            else
@@ -163,18 +164,19 @@ function renderForm($formDefinition, $action, $method='post', $data = array())
     			                $html .= "<option value=\"".$value2."\">";
     			                $html .= $key2."</option><br />"."\n";
     			            }
-    			        }
+    			        //}
     			        //si no es un update vemos si hay opciones por defecto
-    			        elseif ($key2 == 'default_option')
-    			        {
-    			            $html .= "<option value=\"".$value2."\"selected=\"selected\">";
-    			            $html .= $key2."</option><br />"."\n";
-    			        }
-    			        else
-    			        {
-    			            $html .= "<option value=\"".$value2."\">";
-    			            $html .= $key2."</option><br />"."\n";
-    			        }
+    			        //else
+//     			            if ($key2 == 'default_option')
+//     			        {
+//     			            $html .= "<option value=\"".$value2."\" selected=\"selected\">";
+//     			            $html .= $key2."</option><br />"."\n";
+//     			        }
+//     			        else
+//     			        {
+//     			            $html .= "<option value=\"".$value2."\">";
+//     			            $html .= $key2."</option><br />"."\n";
+//     			        }
     			         
     			    }
     			     $html.="</select></li>";

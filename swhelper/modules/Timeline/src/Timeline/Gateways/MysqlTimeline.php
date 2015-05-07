@@ -9,7 +9,7 @@ class MysqlTimeline extends MysqlAdapter
     {
 
         $data = [];
-        $query = "SELECT idcharacter,name,description FROM swhelper.characters
+        $query = "SELECT idcharacter,name,notes,description FROM swhelper.characters
                     inner join class on class_idclass=idclass";
         $result = $this->query($query);
 

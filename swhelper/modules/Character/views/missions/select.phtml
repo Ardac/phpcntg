@@ -1,0 +1,30 @@
+<?php 
+$historic = $viewData['historic'];
+
+
+
+?>
+<h1 class="page-header">Missions</h1>
+
+<a href="/Mission/insert">Insert</a>
+<div class="table-responsive">
+<table class="table table-striped">
+<?php foreach($historic as $id => $data):?>
+    <tr>
+        <?php foreach($data as $key => $data2):
+        if ($key<>'idhistoric')
+            {?>
+            <td><?php echo $data2;
+ 
+            }?>
+            </td>
+             <?php endforeach; ?>
+        <td>
+            <a href="/Mission/update/id/<?=$data['idhistoric'];?>">Update</a> | 
+            <a href="/Mission/delete/id/<?=$data['idhistoric'];?>">Delete</a>
+        </td>
+                 
+    </tr>
+    <?php endforeach; ?>
+</table>
+</div>

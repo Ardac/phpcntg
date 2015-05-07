@@ -48,22 +48,12 @@ class Router
         $actions = get_class_methods($router['module']."\\Controller\\".$router['controller']);
         // Descomponer la url
         $components = explode('/', $url);
-         
         // Determinar el controlador
         if(file_exists(MODULE_PATH."/".$router['module']."/src/".$router['module']."/Controller/".$router['controller'].".php"))
             $array['controller'] = $router['controller'];
         else if(isset($components[1]))
-//             echo "<pre> Router ";
-//             print_r($router);
-//             echo "</pre>";
             
-//             echo "<pre> array ";
-//             print_r($array);
-//             echo "</pre>";
-            
-            
-//             die("aqui");
-            $array['controller'] = 'error';
+           $array['controller'] = 'error';
     
          
         if ($components[1] != "")

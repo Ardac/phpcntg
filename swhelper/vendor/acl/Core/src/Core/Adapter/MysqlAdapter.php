@@ -48,7 +48,17 @@ class MysqlAdapter
         
         return $data;
     }
+    public function recordSetnum($result)
+    {
+        $data = [];
+        // Recorrer el recordset
+        while($row = mysqli_fetch_array($result,MYSQL_NUM))
+        {
+            $data[]=$row;
+        }
     
+        return $data;
+    }
     private function close()
     {
         // Cerra la coneccion

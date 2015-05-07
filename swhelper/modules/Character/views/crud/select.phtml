@@ -1,21 +1,21 @@
 <?php 
-$users = $viewData['users'];
-?>
-<h1 class="page-header">Users</h1>
+$historics = $viewData['historics'];
 
-<a href="/crud/insert">Insert</a>
+?>
+<h1 class="page-header">Missions</h1>
+
+<a href="/Mission/insert">Insert</a>
 <div class="table-responsive">
 <table class="table table-striped">
-    <?php foreach($users as $id => $user):?>
+    <?php foreach($historics as $id => $value):?>
         <tr>
            <?php 
-            //$user = explode(",", $user);
-            foreach ($user as $value):?>               
-                <td><?php echo $value;?></td>
+            foreach ($value as $value2):?>               
+                <td><?php echo $value2;?></td>
             <?php endforeach; ?>
             <td>
-                <a href="/crud/update/id/<?=$id;?>">Update</a> | 
-                <a href="/crud/delete/id/<?=$id;?>">Delete</a>
+                <a href="/Mission/update/id/<?=$historics[$id]['idhistoric'];?>">Update</a> | 
+                <a href="/Mission/delete/id/<?=$historics[$id]['idhistoric'];?>">Delete</a>
             </td>
         </tr>
     <?php endforeach; ?>
